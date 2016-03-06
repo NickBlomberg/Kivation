@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+
+        <item
+            android:id="@+id/home"
+            android:checked="true"
+            android:icon="@drawable/ic_home_black_24dp"
+            android:title="Home"/>
+
+        <item
+            android:id="@+id/recent"
+            android:checked="false"
+            android:icon="@drawable/ic_access_time_black_24dp"
+            android:title="Recent"/>
+
+        <item
+            android:id="@+id/login"
+            android:icon="@drawable/ic_account_box_black_24dp"
+            android:title="Login"/>
+
+    </group>
+</menu>
