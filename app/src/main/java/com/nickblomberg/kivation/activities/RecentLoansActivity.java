@@ -6,10 +6,10 @@ import android.preference.PreferenceManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
+import com.nickblomberg.kivation.KivationApp;
 import com.nickblomberg.kivation.R;
 import com.nickblomberg.kivation.models.PagedLoans;
-import com.nickblomberg.kivation.network.LoanClient;
-import com.nickblomberg.kivation.network.RestClient;
+import com.nickblomberg.kivation.network.KivaAPI;
 import com.nickblomberg.kivation.views.adapters.LoanAdapter;
 
 import oauth.signpost.OAuth;
@@ -46,7 +46,8 @@ public class RecentLoansActivity extends BaseActivity {
         String token = mPrefs.getString(OAuth.OAUTH_TOKEN, "");
         String secret = mPrefs.getString(OAuth.OAUTH_TOKEN_SECRET, "");
 
-        LoanClient loanClient = RestClient.createClient(LoanClient.class, token, secret);
+        KivationApp app = (KivationApp) getApplicationContext();
+        KivaAPI loanClient = app.getNetworkService().getAPI();
 
         Call<PagedLoans> call = loanClient.getNewestLoans();
 
