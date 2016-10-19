@@ -12,7 +12,7 @@ import android.widget.FrameLayout;
 
 import com.nickblomberg.kivation.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -22,9 +22,9 @@ public class BaseActivity extends AppCompatActivity implements
         NavigationView.OnNavigationItemSelectedListener {
 
     private DrawerLayout mDrawerLayout;
-    @Bind(R.id.navigation_view) NavigationView mNavigationView;
-    @Bind(R.id.toolbar) Toolbar toolbar;
-    @Bind(R.id.content) FrameLayout contentFrame;
+    @BindView(R.id.navigation_view) NavigationView mNavigationView;
+    @BindView(R.id.toolbar) Toolbar toolbar;
+    @BindView(R.id.content) FrameLayout contentFrame;
     private ActionBarDrawerToggle mDrawerToggle;
 
     @Override

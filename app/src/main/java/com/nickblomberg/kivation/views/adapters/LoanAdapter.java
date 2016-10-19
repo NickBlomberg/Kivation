@@ -12,7 +12,7 @@ import com.nickblomberg.kivation.R;
 import com.nickblomberg.kivation.models.PagedLoans;
 import com.squareup.picasso.Picasso;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -25,8 +25,8 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
-        @Bind(R.id.loan_name) TextView loanName;
-        @Bind(R.id.loan_image) ImageView loanImage;
+        @BindView(R.id.loan_name) TextView loanName;
+        @BindView(R.id.loan_image) ImageView loanImage;
 
         public ViewHolder(View view) {
             super(view);

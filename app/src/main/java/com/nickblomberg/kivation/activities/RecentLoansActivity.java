@@ -12,6 +12,7 @@ import com.nickblomberg.kivation.models.PagedLoans;
 import com.nickblomberg.kivation.network.KivaAPI;
 import com.nickblomberg.kivation.views.adapters.LoanAdapter;
 
+import butterknife.ButterKnife;
 import oauth.signpost.OAuth;
 import retrofit.Call;
 import retrofit.Callback;
@@ -24,13 +25,15 @@ import timber.log.Timber;
  */
 public class RecentLoansActivity extends BaseActivity {
 
-    private RecyclerView mRecyclerView;
+    RecyclerView mRecyclerView;
+
     private PagedLoans mPagedLoans;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recent);
+        ButterKnife.bind(this);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.loans_recycler_view);
         mRecyclerView.setHasFixedSize(true);
