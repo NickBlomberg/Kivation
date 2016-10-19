@@ -10,14 +10,12 @@ import com.nickblomberg.kivation.KivationApp;
 import com.nickblomberg.kivation.R;
 import com.nickblomberg.kivation.models.PagedLoans;
 import com.nickblomberg.kivation.network.KivaAPI;
+import com.nickblomberg.kivation.network.NetworkService;
+import com.nickblomberg.kivation.presenters.NewestLoansPresenter;
 import com.nickblomberg.kivation.views.adapters.LoanAdapter;
 
 import butterknife.ButterKnife;
 import oauth.signpost.OAuth;
-import retrofit.Call;
-import retrofit.Callback;
-import retrofit.Response;
-import retrofit.Retrofit;
 import timber.log.Timber;
 
 /**
@@ -28,6 +26,7 @@ public class RecentLoansActivity extends BaseActivity {
     RecyclerView mRecyclerView;
 
     private PagedLoans mPagedLoans;
+    private NewestLoansPresenter mNewestLoansPresenter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,26 +44,14 @@ public class RecentLoansActivity extends BaseActivity {
         RecyclerView.Adapter adapter = new LoanAdapter(this, mPagedLoans);
         mRecyclerView.setAdapter(adapter);
 
-        SharedPreferences mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
-        String token = mPrefs.getString(OAuth.OAUTH_TOKEN, "");
-        String secret = mPrefs.getString(OAuth.OAUTH_TOKEN_SECRET, "");
-
         KivationApp app = (KivationApp) getApplicationContext();
-        KivaAPI loanClient = app.getNetworkService().getAPI();
+        NetworkService networkService = app.getNetworkService();
 
-        Call<PagedLoans> call = loanClient.getNewestLoans();
+        mNewestLoansPresenter = new NewestLoansPresenter(this, networkService);
+        mNewestLoansPresenter.loadNewestLoans();
+    }
 
-        call.enqueue(new Callback<PagedLoans>() {
-            @Override
-            public void onResponse(Response<PagedLoans> response, Retrofit retrofit) {
-                mPagedLoans = response.body();
-                mRecyclerView.swapAdapter(new LoanAdapter(RecentLoansActivity.this, response.body()), false);
-            }
-
-            @Override
-            public void onFailure(Throwable t) {
-                Timber.e("Failed to receive response from Kiva API");
-            }
-        });
+    public void displayNewestLoans(PagedLoans pagedLoans) {
+        mRecyclerView.swapAdapter(new LoanAdapter(RecentLoansActivity.this, pagedLoans), false);
     }
 }

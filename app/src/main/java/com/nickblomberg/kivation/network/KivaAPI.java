@@ -2,13 +2,13 @@ package com.nickblomberg.kivation.network;
 
 import com.nickblomberg.kivation.models.PagedLoans;
 
-import retrofit.Call;
-import retrofit.http.GET;
+import retrofit2.http.GET;
+import rx.Observable;
 
 /**
  * Defines the methods required for accessing API features connected to loans.
  */
 public interface KivaAPI {
     @GET("loans/newest.json")
-    Call<PagedLoans> getNewestLoans();
+    Observable<PagedLoans> getNewestLoans();
 }
