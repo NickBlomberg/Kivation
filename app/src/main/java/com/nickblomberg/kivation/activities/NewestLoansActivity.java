@@ -15,7 +15,7 @@ import butterknife.ButterKnife;
 /**
  * An activity to display the most recent loans which have been added to the Kiva platform.
  */
-public class RecentLoansActivity extends BaseActivity {
+public class NewestLoansActivity extends BaseActivity {
 
     RecyclerView mRecyclerView;
 
@@ -45,6 +45,6 @@ public class RecentLoansActivity extends BaseActivity {
     }
 
     public void displayNewestLoans(PagedLoans pagedLoans) {
-        mRecyclerView.swapAdapter(new LoanAdapter(RecentLoansActivity.this, pagedLoans), false);
+        mRecyclerView.swapAdapter(new LoanAdapter(NewestLoansActivity.this, pagedLoans), false);
     }
 }

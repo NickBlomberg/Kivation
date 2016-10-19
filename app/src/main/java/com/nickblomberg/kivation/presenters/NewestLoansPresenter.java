@@ -1,6 +1,6 @@
 package com.nickblomberg.kivation.presenters;
 
-import com.nickblomberg.kivation.activities.RecentLoansActivity;
+import com.nickblomberg.kivation.activities.NewestLoansActivity;
 import com.nickblomberg.kivation.models.PagedLoans;
 import com.nickblomberg.kivation.network.NetworkService;
 
@@ -15,10 +15,10 @@ import rx.schedulers.Schedulers;
 
 public class NewestLoansPresenter {
 
-    RecentLoansActivity mView;
+    NewestLoansActivity mView;
     NetworkService mNetworkService;
 
-    public NewestLoansPresenter(RecentLoansActivity view, NetworkService networkService) {
+    public NewestLoansPresenter(NewestLoansActivity view, NetworkService networkService) {
         this.mView = view;
         this.mNetworkService = networkService;
     }

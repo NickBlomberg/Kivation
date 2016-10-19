@@ -67,7 +67,7 @@ public class BaseActivity extends AppCompatActivity implements
                 break;
 
             case R.id.recent:
-                startActivity(new Intent(this, RecentLoansActivity.class));
+                startActivity(new Intent(this, NewestLoansActivity.class));
                 break;
 
             case R.id.login:

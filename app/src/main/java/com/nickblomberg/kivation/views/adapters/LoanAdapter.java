@@ -27,6 +27,7 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
 
         @BindView(R.id.loan_name) TextView loanName;
         @BindView(R.id.loan_image) ImageView loanImage;
+        @BindView(R.id.loan_amount) TextView loanAmount;
 
         public ViewHolder(View view) {
             super(view);
@@ -58,6 +59,8 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
         Picasso.with(mContext)
                 .load(mPagedLoans.getLoans().get(i).getImage().getSmallImageURL())
                 .into(viewHolder.loanImage);
+
+        viewHolder.loanAmount.setText("$ " + mPagedLoans.getLoans().get(i).getLoanAmount());
     }
 
     @Override

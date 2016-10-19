@@ -41,7 +41,7 @@
         </activity>
 
         <activity
-            android:name=".activities.RecentLoansActivity"
+            android:name=".activities.NewestLoansActivity"
             android:label="@string/activity_title_recent"/>
 
     </application>
