@@ -23,8 +23,8 @@ public class NewestLoansPresenter {
         this.mNetworkService = networkService;
     }
 
-    public void loadNewestLoans() {
-        mNetworkService.getAPI().getNewestLoans()
+    public void loadNewestLoans(int page) {
+        mNetworkService.getAPI().getNewestLoans(page)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribe(new Observer<PagedLoans>() {
@@ -40,7 +40,7 @@ public class NewestLoansPresenter {
 
                     @Override
                     public void onNext(PagedLoans pagedLoans) {
-                        mView.displayNewestLoans(pagedLoans);
+                        mView.displayNewestLoans(pagedLoans.getLoans());
                     }
                 });
     }

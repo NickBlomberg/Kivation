@@ -9,8 +9,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nickblomberg.kivation.R;
-import com.nickblomberg.kivation.models.PagedLoans;
+import com.nickblomberg.kivation.models.Loan;
 import com.squareup.picasso.Picasso;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -21,7 +24,7 @@ import butterknife.ButterKnife;
 public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
 
     private Context mContext;
-    private PagedLoans mPagedLoans;
+    private List<Loan> mLoans;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -35,9 +38,9 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
         }
     }
 
-    public LoanAdapter(Context context, PagedLoans pagedLoans) {
+    public LoanAdapter(Context context) {
         this.mContext = context;
-        this.mPagedLoans = pagedLoans;
+        this.mLoans = new ArrayList<Loan>();
     }
 
     @Override
@@ -54,17 +57,21 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
     @Override
     public void onBindViewHolder(ViewHolder viewHolder, int i) {
 
-        viewHolder.loanName.setText(mPagedLoans.getLoans().get(i).getName());
+        viewHolder.loanName.setText(mLoans.get(i).getName());
 
         Picasso.with(mContext)
-                .load(mPagedLoans.getLoans().get(i).getImage().getSmallImageURL())
+                .load(mLoans.get(i).getImage().getSmallImageURL())
                 .into(viewHolder.loanImage);
 
-        viewHolder.loanAmount.setText("$ " + mPagedLoans.getLoans().get(i).getLoanAmount());
+        viewHolder.loanAmount.setText("$ " + mLoans.get(i).getLoanAmount());
     }
 
     @Override
     public int getItemCount() {
-        return mPagedLoans.getLoans().size();
+        return mLoans.size();
+    }
+
+    public void appendLoans(List<Loan> loans) {
+        mLoans.addAll(loans);
     }
 }
