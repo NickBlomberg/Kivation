@@ -31,7 +31,7 @@ public class LoginActivity extends AppCompatActivity {
     private static final String REQUEST_TOKEN_URL = "https://api.kivaws.org/oauth/request_token";
     private static final String ACCESS_TOKEN_URL = "https://api.kivaws.org/oauth/access_token";
 
-    private static final String SCOPES = "access,user_balance,user_email";
+    private static final String SCOPES = "access,user_balance,user_email,user_expected_repayments,user_anon_lender_data,user_anon_lender_loans,user_stats";
 
     private static final String AUTHORIZATION_URL =
             "https://www.kiva.org/oauth/authorize?response_type=code"
