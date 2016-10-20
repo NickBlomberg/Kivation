@@ -8,6 +8,7 @@ import com.nickblomberg.kivation.EndlessRecyclerViewScrollListener;
 import com.nickblomberg.kivation.KivationApp;
 import com.nickblomberg.kivation.R;
 import com.nickblomberg.kivation.models.Loan;
+import com.nickblomberg.kivation.network.NetworkService;
 import com.nickblomberg.kivation.presenters.NewestLoansPresenter;
 import com.nickblomberg.kivation.views.adapters.LoanAdapter;
 
@@ -39,9 +40,9 @@ public class NewestLoansActivity extends BaseActivity {
         mAdapter = new LoanAdapter(this);
         mRecyclerView.setAdapter(mAdapter);
 
-        KivationApp app = (KivationApp) getApplicationContext();
+        NetworkService networkService = ((KivationApp) getApplicationContext()).getNetworkService();
 
-        mNewestLoansPresenter = new NewestLoansPresenter(this, app.getNetworkService());
+        mNewestLoansPresenter = new NewestLoansPresenter(this, networkService);
         mNewestLoansPresenter.loadNewestLoans(1);
 
         mRecyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener((LinearLayoutManager) layoutManager) {
