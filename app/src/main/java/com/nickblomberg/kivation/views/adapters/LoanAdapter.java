@@ -5,6 +5,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -25,6 +26,7 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
 
     private Context mContext;
     private List<Loan> mLoans;
+    private static OnItemClickListener sListener;
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 
@@ -35,12 +37,28 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
         public ViewHolder(View view) {
             super(view);
             ButterKnife.bind(this, view);
+
+            view.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    if (sListener != null) {
+                        int position = getAdapterPosition();
+                        if (position != RecyclerView.NO_POSITION) {
+                            sListener.onItemClick(v, position);
+                        }
+                    }
+                }
+            });
         }
     }
 
     public LoanAdapter(Context context) {
         this.mContext = context;
         this.mLoans = new ArrayList<Loan>();
+    }
+
+    public void setOnItemClickListener(OnItemClickListener listener) {
+        sListener = listener;
     }
 
     @Override
@@ -73,5 +91,13 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
 
     public void appendLoans(List<Loan> loans) {
         mLoans.addAll(loans);
+    }
+
+    public Loan getItem(int position) {
+        return mLoans.get(position);
+    }
+
+    public interface OnItemClickListener {
+        void onItemClick(View view, int position);
     }
 }
