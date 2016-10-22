@@ -1,5 +1,6 @@
 package com.nickblomberg.kivation.network;
 
+import com.facebook.stetho.okhttp3.StethoInterceptor;
 import com.nickblomberg.kivation.Config;
 
 import okhttp3.OkHttpClient;
@@ -22,7 +23,9 @@ public class NetworkService {
     private KivaAPI mApi;
 
     public NetworkService() {
-        sHttpClient = new OkHttpClient();
+        sHttpClient = new OkHttpClient.Builder()
+                .addNetworkInterceptor(new StethoInterceptor())
+                .build();
 
         sBuilder = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
