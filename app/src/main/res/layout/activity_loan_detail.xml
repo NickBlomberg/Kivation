@@ -36,6 +36,14 @@
                 android:textStyle="normal|bold" />
 
             <TextView
+                android:id="@+id/detail_loan_country"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp"
+                android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
+
+            <TextView
                 android:id="@+id/detail_loan_sector"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -44,6 +52,7 @@
                 android:textAppearance="@style/TextAppearance.AppCompat.Medium" />
 
         </LinearLayout>
+        
     </LinearLayout>
 
     <TextView

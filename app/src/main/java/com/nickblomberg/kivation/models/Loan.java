@@ -18,6 +18,7 @@ public class Loan {
     private String name;
     private String status;
     private LoanImage image;
+    private Location location;
     private String activity;
     private String sector;
     private String theme;
@@ -54,20 +55,21 @@ public class Loan {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", status='" + status + '\'' +
-                ", fundedAmount='" + fundedAmount + '\'' +
-                ", paidAmount='" + paidAmount + '\'' +
                 ", image=" + image +
+                ", location=" + location +
                 ", activity='" + activity + '\'' +
                 ", sector='" + sector + '\'' +
                 ", theme='" + theme + '\'' +
                 ", use='" + use + '\'' +
+                ", translator='" + translator + '\'' +
+                ", fundedAmount='" + fundedAmount + '\'' +
+                ", paidAmount='" + paidAmount + '\'' +
                 ", partnerID='" + partnerID + '\'' +
                 ", postedDate=" + postedDate +
                 ", loanAmount='" + loanAmount + '\'' +
                 ", lenderCount='" + lenderCount + '\'' +
                 ", fundedDate=" + fundedDate +
                 ", paidDate=" + paidDate +
-                ", translator='" + translator + '\'' +
                 '}';
     }
 
@@ -117,6 +119,14 @@ public class Loan {
 
     public void setImage(LoanImage image) {
         this.image = image;
+    }
+
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
     }
 
     public String getActivity() {

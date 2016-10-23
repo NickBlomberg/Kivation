@@ -1,8 +1,7 @@
 package com.nickblomberg.kivation.activities;
 
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -14,7 +13,6 @@ import org.parceler.Parcels;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import butterknife.Optional;
 import timber.log.Timber;
 
 public class LoanDetailActivity extends BaseActivity {
@@ -24,6 +22,7 @@ public class LoanDetailActivity extends BaseActivity {
     @Nullable @BindView(R.id.detail_loan_name) TextView mLoanName;
     @Nullable @BindView(R.id.detail_loan_sector) TextView mLoanTheme;
     @Nullable @BindView(R.id.detail_description) TextView mLoanDescription;
+    @Nullable @BindView(R.id.detail_loan_country) TextView mLoanCountry;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,5 +55,7 @@ public class LoanDetailActivity extends BaseActivity {
                 "eleifend, in feugiat orci placerat. Etiam dui sem, egestas vel quam id, " +
                 "egestas tristique quam. Maecenas viverra quis dolor sit amet interdum. " +
                 "Quisque non consectetur ante.");
+
+        mLoanCountry.setText(mLoan.getLocation().getCountry());
     }
 }
