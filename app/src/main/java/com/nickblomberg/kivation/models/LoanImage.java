@@ -1,10 +1,13 @@
 package com.nickblomberg.kivation.models;
 
+import org.parceler.Parcel;
+
 /**
  * Defines the image which is attached to a specific Kiva Loan.
  *
  * @see http://build.kiva.org/docs/data/media
  */
+@Parcel(Parcel.Serialization.BEAN)
 public class LoanImage {
 
     private static final String BASE_URL = "http://www.kiva.org/img/";

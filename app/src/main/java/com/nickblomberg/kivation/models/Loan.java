@@ -2,6 +2,8 @@ package com.nickblomberg.kivation.models;
 
 import com.google.gson.annotations.SerializedName;
 
+import org.parceler.Parcel;
+
 import java.util.Date;
 
 /**
@@ -9,6 +11,7 @@ import java.util.Date;
  *
  * @see http://build.kiva.org/api#GET*|loans|:ids
  */
+@Parcel(Parcel.Serialization.BEAN)
 public class Loan {
 
     private String id;

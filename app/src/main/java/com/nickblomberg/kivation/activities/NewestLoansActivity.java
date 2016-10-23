@@ -1,5 +1,6 @@
 package com.nickblomberg.kivation.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -13,10 +14,11 @@ import com.nickblomberg.kivation.network.NetworkService;
 import com.nickblomberg.kivation.presenters.NewestLoansPresenter;
 import com.nickblomberg.kivation.views.adapters.LoanAdapter;
 
+import org.parceler.Parcels;
+
 import java.util.List;
 
 import butterknife.ButterKnife;
-import timber.log.Timber;
 
 /**
  * An activity to display the most recent loans which have been added to the Kiva platform.
@@ -44,7 +46,9 @@ public class NewestLoansActivity extends BaseActivity {
             @Override
             public void onItemClick(View view, int position) {
                 Loan clickedLoan = mAdapter.getItem(position);
-                Timber.d("Clicked: %s ", clickedLoan);
+                Intent i = new Intent(NewestLoansActivity.this, LoanDetailActivity.class);
+                i.putExtra("loan", Parcels.wrap(clickedLoan));
+                startActivity(i);
             }
         });
 
