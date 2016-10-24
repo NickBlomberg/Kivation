@@ -19,6 +19,7 @@ public class Loan {
     private String status;
     private LoanImage image;
     private Location location;
+    private Description description;
     private String activity;
     private String sector;
     private String theme;
@@ -57,6 +58,7 @@ public class Loan {
                 ", status='" + status + '\'' +
                 ", image=" + image +
                 ", location=" + location +
+                ", description=" + description +
                 ", activity='" + activity + '\'' +
                 ", sector='" + sector + '\'' +
                 ", theme='" + theme + '\'' +
@@ -127,6 +129,14 @@ public class Loan {
 
     public void setLocation(Location location) {
         this.location = location;
+    }
+
+    public Description getDescription() {
+        return description;
+    }
+
+    public void setDescription(Description description) {
+        this.description = description;
     }
 
     public String getActivity() {

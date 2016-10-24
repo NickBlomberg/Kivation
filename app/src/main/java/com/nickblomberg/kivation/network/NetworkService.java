@@ -1,7 +1,11 @@
 package com.nickblomberg.kivation.network;
 
 import com.facebook.stetho.okhttp3.StethoInterceptor;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import com.nickblomberg.kivation.Config;
+import com.nickblomberg.kivation.models.Description;
+import com.nickblomberg.kivation.serializers.DescriptionDeserializer;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -27,10 +31,14 @@ public class NetworkService {
                 .addNetworkInterceptor(new StethoInterceptor())
                 .build();
 
+        Gson gson = new GsonBuilder()
+                .registerTypeAdapter(Description.class, new DescriptionDeserializer())
+                .create();
+
         sBuilder = new Retrofit.Builder()
                 .baseUrl(BASE_URL)
                 .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
-                .addConverterFactory(GsonConverterFactory.create());
+                .addConverterFactory(GsonConverterFactory.create(gson));
 
         Retrofit retrofit = sBuilder.client(sHttpClient).build();
         mApi = retrofit.create(KivaAPI.class);
