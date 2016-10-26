@@ -9,6 +9,8 @@ import com.nickblomberg.kivation.models.Description;
 
 import java.lang.reflect.Type;
 
+import timber.log.Timber;
+
 /**
  * // TODO create class javadoc
  *
@@ -26,8 +28,11 @@ public class DescriptionDeserializer implements JsonDeserializer<Description> {
             value = object.get("en").getAsString();
         }
 
+        // Replace HTML line break tags with a line separator
+        String cleanDescription = value.replaceAll("<br />", System.getProperty("line.separator"));
+
         Description description = new Description();
-        description.setDescription(value);
+        description.setDescription(cleanDescription);
 
         return description;
     }
