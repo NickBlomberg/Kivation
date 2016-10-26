@@ -1,4 +1,4 @@
-package com.nickblomberg.kivation.serializers;
+package com.nickblomberg.kivation.network.serializers;
 
 import com.google.gson.JsonDeserializationContext;
 import com.google.gson.JsonDeserializer;
@@ -8,8 +8,6 @@ import com.google.gson.JsonParseException;
 import com.nickblomberg.kivation.models.Description;
 
 import java.lang.reflect.Type;
-
-import timber.log.Timber;
 
 /**
  * // TODO create class javadoc

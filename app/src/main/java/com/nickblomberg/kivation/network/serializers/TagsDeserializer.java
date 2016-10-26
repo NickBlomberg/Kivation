@@ -1,4 +1,4 @@
-package com.nickblomberg.kivation.serializers;
+package com.nickblomberg.kivation.network.serializers;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonDeserializationContext;
