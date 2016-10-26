@@ -5,6 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import org.parceler.Parcel;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * The Loan model represents the data associated with a single loan made through Kiva.
@@ -16,64 +17,40 @@ public class Loan {
 
     private String id;
     private String name;
-    private String status;
-    private LoanImage image;
-    private Location location;
     private Description description;
-    private String activity;
-    private String sector;
-    private String theme;
-    private String use;
-    private String translator;
+    private String status;
 
     @SerializedName("funded_amount")
     private String fundedAmount;
 
-    @SerializedName("paid_amount")
-    private String paidAmount;
+    private LoanImage image;
+    private String activity;
+    private String sector;
+    private List<String> themes;
+    private String use;
+    private Location location;
 
     @SerializedName("partner_id")
-    private String partnerID;
+    private int partnerID;
+
+    private String translator;
 
     @SerializedName("posted_date")
     private Date postedDate;
+
+    @SerializedName("planned_expiration_date")
+    private Date plannedExpirationDate;
 
     @SerializedName("loan_amount")
     private String loanAmount;
 
     @SerializedName("lender_count")
-    private String lenderCount;
+    private int lenderCount;
 
-    @SerializedName("funded_date")
-    private Date fundedDate;
+    @SerializedName("paid_amount")
+    private String paidAmount;
 
-    @SerializedName("paid_date")
-    private Date paidDate;
-
-    @Override
-    public String toString() {
-        return "Loan{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", status='" + status + '\'' +
-                ", image=" + image +
-                ", location=" + location +
-                ", description=" + description +
-                ", activity='" + activity + '\'' +
-                ", sector='" + sector + '\'' +
-                ", theme='" + theme + '\'' +
-                ", use='" + use + '\'' +
-                ", translator='" + translator + '\'' +
-                ", fundedAmount='" + fundedAmount + '\'' +
-                ", paidAmount='" + paidAmount + '\'' +
-                ", partnerID='" + partnerID + '\'' +
-                ", postedDate=" + postedDate +
-                ", loanAmount='" + loanAmount + '\'' +
-                ", lenderCount='" + lenderCount + '\'' +
-                ", fundedDate=" + fundedDate +
-                ", paidDate=" + paidDate +
-                '}';
-    }
+    private Tags tags;
 
     public String getId() {
         return id;
@@ -89,6 +66,14 @@ public class Loan {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Description getDescription() {
+        return description;
+    }
+
+    public void setDescription(Description description) {
+        this.description = description;
     }
 
     public String getStatus() {
@@ -107,36 +92,12 @@ public class Loan {
         this.fundedAmount = fundedAmount;
     }
 
-    public String getPaidAmount() {
-        return paidAmount;
-    }
-
-    public void setPaidAmount(String paidAmount) {
-        this.paidAmount = paidAmount;
-    }
-
     public LoanImage getImage() {
         return image;
     }
 
     public void setImage(LoanImage image) {
         this.image = image;
-    }
-
-    public Location getLocation() {
-        return location;
-    }
-
-    public void setLocation(Location location) {
-        this.location = location;
-    }
-
-    public Description getDescription() {
-        return description;
-    }
-
-    public void setDescription(Description description) {
-        this.description = description;
     }
 
     public String getActivity() {
@@ -155,12 +116,12 @@ public class Loan {
         this.sector = sector;
     }
 
-    public String getTheme() {
-        return theme;
+    public List<String> getThemes() {
+        return themes;
     }
 
-    public void setTheme(String theme) {
-        this.theme = theme;
+    public void setThemes(List<String> themes) {
+        this.themes = themes;
     }
 
     public String getUse() {
@@ -171,12 +132,28 @@ public class Loan {
         this.use = use;
     }
 
-    public String getPartnerID() {
+    public Location getLocation() {
+        return location;
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
+    public int getPartnerID() {
         return partnerID;
     }
 
-    public void setPartnerID(String partnerID) {
+    public void setPartnerID(int partnerID) {
         this.partnerID = partnerID;
+    }
+
+    public String getTranslator() {
+        return translator;
+    }
+
+    public void setTranslator(String translator) {
+        this.translator = translator;
     }
 
     public Date getPostedDate() {
@@ -187,6 +164,14 @@ public class Loan {
         this.postedDate = postedDate;
     }
 
+    public Date getPlannedExpirationDate() {
+        return plannedExpirationDate;
+    }
+
+    public void setPlannedExpirationDate(Date plannedExpirationDate) {
+        this.plannedExpirationDate = plannedExpirationDate;
+    }
+
     public String getLoanAmount() {
         return loanAmount;
     }
@@ -195,35 +180,52 @@ public class Loan {
         this.loanAmount = loanAmount;
     }
 
-    public String getLenderCount() {
+    public int getLenderCount() {
         return lenderCount;
     }
 
-    public void setLenderCount(String lenderCount) {
+    public void setLenderCount(int lenderCount) {
         this.lenderCount = lenderCount;
     }
 
-    public Date getFundedDate() {
-        return fundedDate;
+    public String getPaidAmount() {
+        return paidAmount;
     }
 
-    public void setFundedDate(Date fundedDate) {
-        this.fundedDate = fundedDate;
+    public void setPaidAmount(String paidAmount) {
+        this.paidAmount = paidAmount;
     }
 
-    public Date getPaidDate() {
-        return paidDate;
+    public Tags getTags() {
+        return tags;
     }
 
-    public void setPaidDate(Date paidDate) {
-        this.paidDate = paidDate;
+    public void setTags(Tags tags) {
+        this.tags = tags;
     }
 
-    public String getTranslator() {
-        return translator;
-    }
-
-    public void setTranslator(String translator) {
-        this.translator = translator;
+    @Override
+    public String toString() {
+        return "Loan{" +
+                "id='" + id + '\'' +
+                ", name='" + name + '\'' +
+                ", description=" + description +
+                ", status='" + status + '\'' +
+                ", fundedAmount='" + fundedAmount + '\'' +
+                ", image=" + image +
+                ", activity='" + activity + '\'' +
+                ", sector='" + sector + '\'' +
+                ", themes=" + themes +
+                ", use='" + use + '\'' +
+                ", location=" + location +
+                ", partnerID=" + partnerID +
+                ", translator='" + translator + '\'' +
+                ", postedDate=" + postedDate +
+                ", plannedExpirationDate=" + plannedExpirationDate +
+                ", loanAmount='" + loanAmount + '\'' +
+                ", lenderCount=" + lenderCount +
+                ", paidAmount='" + paidAmount + '\'' +
+                ", tags=" + tags +
+                '}';
     }
 }

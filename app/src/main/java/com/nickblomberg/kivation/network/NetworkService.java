@@ -5,7 +5,9 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.nickblomberg.kivation.Config;
 import com.nickblomberg.kivation.models.Description;
+import com.nickblomberg.kivation.models.Tags;
 import com.nickblomberg.kivation.serializers.DescriptionDeserializer;
+import com.nickblomberg.kivation.serializers.TagsDeserializer;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;
@@ -33,6 +35,7 @@ public class NetworkService {
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Description.class, new DescriptionDeserializer())
+                .registerTypeAdapter(Tags.class, new TagsDeserializer())
                 .create();
 
         sBuilder = new Retrofit.Builder()
