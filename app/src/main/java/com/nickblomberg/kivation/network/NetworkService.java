@@ -6,8 +6,8 @@ import com.google.gson.GsonBuilder;
 import com.nickblomberg.kivation.Config;
 import com.nickblomberg.kivation.models.Description;
 import com.nickblomberg.kivation.models.Tags;
-import com.nickblomberg.kivation.serializers.DescriptionDeserializer;
-import com.nickblomberg.kivation.serializers.TagsDeserializer;
+import com.nickblomberg.kivation.network.serializers.DescriptionDeserializer;
+import com.nickblomberg.kivation.network.serializers.TagsDeserializer;
 
 import okhttp3.OkHttpClient;
 import retrofit2.Retrofit;

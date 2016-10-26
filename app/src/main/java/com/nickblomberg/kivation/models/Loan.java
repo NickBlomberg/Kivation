@@ -33,7 +33,7 @@ public class Loan {
     @SerializedName("partner_id")
     private int partnerID;
 
-    private String translator;
+    private Translator translator;
 
     @SerializedName("posted_date")
     private Date postedDate;
@@ -148,11 +148,11 @@ public class Loan {
         this.partnerID = partnerID;
     }
 
-    public String getTranslator() {
+    public Translator getTranslator() {
         return translator;
     }
 
-    public void setTranslator(String translator) {
+    public void setTranslator(Translator translator) {
         this.translator = translator;
     }
 
