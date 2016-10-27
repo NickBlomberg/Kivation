@@ -1,5 +1,6 @@
 package com.nickblomberg.kivation.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.view.Menu;
@@ -31,20 +32,14 @@ public class MainActivity extends BaseActivity {
 
         sessionManager = new SessionManager(this);
 
-        String[] credentials = sessionManager.getOAuthCredentials();
-        String token = credentials[0];
-        String secret = credentials[1];
-
-        // Show the access token and secret when entries have been saved
-        if (credentials.length == 2) {
-            mLoginStatus.setText("\nToken: " + token + "\n\nSecret: " + secret);
-        }
+        updateLoginDetails();
 
         // Temporary logout button for debugging
         mLogoutButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 sessionManager.logout();
+                updateLoginDetails();
             }
         });
     }
@@ -53,6 +48,17 @@ public class MainActivity extends BaseActivity {
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_main, menu);
         return true;
+    }
+
+    private void updateLoginDetails() {
+        String[] credentials = sessionManager.getOAuthCredentials();
+        String token = credentials[0];
+        String secret = credentials[1];
+
+        // Show the access token and secret when entries have been saved
+        if (credentials.length == 2) {
+            mLoginStatus.setText("\nToken: " + token + "\n\nSecret: " + secret);
+        }
     }
 
 }
