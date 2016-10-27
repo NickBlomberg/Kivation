@@ -1,10 +1,8 @@
 package com.nickblomberg.kivation.activities;
 
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 
@@ -25,7 +23,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private OAuthConsumer mConsumer;
     private OAuthProvider mProvider;
-    private SharedPreferences mPrefs;
 
     private static final String OAUTH_CALLBACK = "x-oauthflow://callback";
     private static final String REQUEST_TOKEN_URL = "https://api.kivaws.org/oauth/request_token";
@@ -41,8 +38,6 @@ public class LoginActivity extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
-        mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
 
         mConsumer = new CommonsHttpOAuthConsumer(Config.CONSUMER_KEY, Config.CONSUMER_SECRET);
 
@@ -60,7 +55,7 @@ public class LoginActivity extends AppCompatActivity {
 
         final Uri uri = intent.getData();
         if (uri != null && uri.getScheme().equals("x-oauthflow")) {
-            new OAuthAccessTokenTask(this, mProvider, mConsumer, mPrefs).execute(uri);
+            new OAuthAccessTokenTask(this, mProvider, mConsumer).execute(uri);
             finish();
         }
     }

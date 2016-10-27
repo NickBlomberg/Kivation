@@ -1,17 +1,15 @@
 package com.nickblomberg.kivation.activities;
 
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.annotation.Nullable;
 import android.view.Menu;
 import android.widget.TextView;
 
 import com.nickblomberg.kivation.R;
+import com.nickblomberg.kivation.SessionManager;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
-import oauth.signpost.OAuth;
 
 /**
  * The main activity into which the activity launches. This currently just displays
@@ -19,7 +17,7 @@ import oauth.signpost.OAuth;
  */
 public class MainActivity extends BaseActivity {
 
-    private SharedPreferences mPrefs;
+    private SessionManager sessionManager;
     @BindView(R.id.login_status) @Nullable TextView mLoginStatus;
 
     @Override
@@ -28,13 +26,14 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        mPrefs = PreferenceManager.getDefaultSharedPreferences(this);
+        sessionManager = new SessionManager(this);
 
-        String token = mPrefs.getString(OAuth.OAUTH_TOKEN, "");
-        String secret = mPrefs.getString(OAuth.OAUTH_TOKEN_SECRET, "");
+        String[] credentials = sessionManager.getOAuthCredentials();
+        String token = credentials[0];
+        String secret = credentials[1];
 
         // Show the access token and secret when entries have been saved
-        if (token != "" && secret != "") {
+        if (credentials.length == 2) {
             mLoginStatus.setText("\nToken: " + token + "\n\nSecret: " + secret);
         }
     }

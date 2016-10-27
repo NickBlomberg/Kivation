@@ -1,9 +1,10 @@
 package com.nickblomberg.kivation.tasks;
 
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.AsyncTask;
+
+import com.nickblomberg.kivation.SessionManager;
 
 import oauth.signpost.OAuth;
 import oauth.signpost.OAuthConsumer;
@@ -19,14 +20,14 @@ public class OAuthAccessTokenTask extends AsyncTask<Uri, Void, Void> {
     private Context mContext;
     private OAuthProvider mProvider;
     private OAuthConsumer mConsumer;
-    private SharedPreferences mPreferences;
+    private SessionManager sessionManager;
 
-    public OAuthAccessTokenTask(Context context, OAuthProvider provider,
-                                OAuthConsumer consumer, SharedPreferences prefs) {
+    public OAuthAccessTokenTask(Context context, OAuthProvider provider, OAuthConsumer consumer) {
         this.mContext = context;
         this.mProvider = provider;
         this.mConsumer = consumer;
-        this.mPreferences = prefs;
+
+        sessionManager = new SessionManager(mContext);
     }
 
     @Override
@@ -41,16 +42,11 @@ public class OAuthAccessTokenTask extends AsyncTask<Uri, Void, Void> {
 
             mProvider.retrieveAccessToken(mConsumer, oAuthVerifier);
 
-            final SharedPreferences.Editor edit = mPreferences.edit();
+            String token = mConsumer.getToken();
+            String secret = mConsumer.getTokenSecret();
 
-            // Write the Access Token components to preferences
-            edit.putString(OAuth.OAUTH_TOKEN, mConsumer.getToken());
-            edit.putString(OAuth.OAUTH_TOKEN_SECRET, mConsumer.getTokenSecret());
-            edit.apply();
-
-            String token = mPreferences.getString(OAuth.OAUTH_TOKEN, "");
-            String secret = mPreferences.getString(OAuth.OAUTH_TOKEN_SECRET, "");
-
+            sessionManager.login(token, secret);
+            
             mConsumer.setTokenWithSecret(token, secret);
 
         } catch (Exception e) {
