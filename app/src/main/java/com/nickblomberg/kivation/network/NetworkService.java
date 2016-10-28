@@ -10,6 +10,7 @@ import com.nickblomberg.kivation.network.serializers.DescriptionDeserializer;
 import com.nickblomberg.kivation.network.serializers.TagsDeserializer;
 
 import okhttp3.OkHttpClient;
+import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
 import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
@@ -29,8 +30,12 @@ public class NetworkService {
     private KivaAPI mApi;
 
     public NetworkService() {
+        HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
+        loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
+
         sHttpClient = new OkHttpClient.Builder()
                 .addNetworkInterceptor(new StethoInterceptor())
+                .addInterceptor(loggingInterceptor)
                 .build();
 
         Gson gson = new GsonBuilder()
