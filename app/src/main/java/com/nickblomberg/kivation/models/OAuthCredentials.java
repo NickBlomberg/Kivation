@@ -10,9 +10,9 @@ public class OAuthCredentials {
     private String token;
     private String secret;
 
-    public OAuthCredentials(String secret, String token) {
-        this.secret = secret;
+    public OAuthCredentials(String token, String secret) {
         this.token = token;
+        this.secret = secret;
     }
 
     public String getToken() {
