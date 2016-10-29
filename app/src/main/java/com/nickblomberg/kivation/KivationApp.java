@@ -16,7 +16,18 @@ public class KivationApp extends Application {
         Timber.plant(new Timber.DebugTree());
         Stetho.initializeWithDefaults(this);
 
-        mNetworkService = new NetworkService();
+        createNetworkService();
+    }
+
+    private void createNetworkService() {
+        SessionManager sessionManager = new SessionManager(this);
+        String[] credentials = sessionManager.getOAuthCredentials();
+
+        if (credentials.length == 2) {
+            mNetworkService = new NetworkService(credentials[0], credentials[1]);
+        } else {
+            mNetworkService = new NetworkService();
+        }
     }
 
     public NetworkService getNetworkService() {
