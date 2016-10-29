@@ -70,6 +70,10 @@ public class BaseActivity extends AppCompatActivity implements
                 startActivity(new Intent(this, NewestLoansActivity.class));
                 break;
 
+            case R.id.account:
+                startActivity(new Intent(this, AccountActivity.class));
+                break;
+
             case R.id.login:
                 startActivity(new Intent(this, LoginActivity.class));
                 break;
