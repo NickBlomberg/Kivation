@@ -28,15 +28,39 @@ public class NetworkService {
     private static final String BASE_URL = "https://api.kivaws.org/v1/";
 
     private KivaAPI mApi;
+    private String mToken;
+    private String mSecret;
 
     public NetworkService() {
+        this.mToken = "";
+        this.mSecret = "";
+        setup();
+    }
+
+    public NetworkService(String token, String secret) {
+        this.mToken = token;
+        this.mSecret = secret;
+        setup();
+    }
+
+    public void setup() {
         HttpLoggingInterceptor loggingInterceptor = new HttpLoggingInterceptor();
         loggingInterceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
 
-        sHttpClient = new OkHttpClient.Builder()
+        OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder()
                 .addNetworkInterceptor(new StethoInterceptor())
-                .addInterceptor(loggingInterceptor)
-                .build();
+                .addInterceptor(loggingInterceptor);
+
+        if (mToken != "" && mSecret != "") {
+            OkHttpOAuthConsumer consumer =
+                    new OkHttpOAuthConsumer(Config.CONSUMER_KEY, Config.CONSUMER_SECRET);
+
+            consumer.setTokenWithSecret(mToken, mSecret);
+
+            clientBuilder.addInterceptor(new SigningInterceptor(consumer));
+        }
+
+        sHttpClient = clientBuilder.build();
 
         Gson gson = new GsonBuilder()
                 .registerTypeAdapter(Description.class, new DescriptionDeserializer())
@@ -50,15 +74,6 @@ public class NetworkService {
 
         Retrofit retrofit = sBuilder.client(sHttpClient).build();
         mApi = retrofit.create(KivaAPI.class);
-    }
-
-    public void addSigningInterceptor(String token, String secret) {
-        OkHttpOAuthConsumer consumer =
-                new OkHttpOAuthConsumer(Config.CONSUMER_KEY, Config.CONSUMER_SECRET);
-
-        consumer.setTokenWithSecret(token, secret);
-
-        sHttpClient.interceptors().add(new SigningInterceptor(consumer));
     }
 
     public KivaAPI getAPI() {
