@@ -3,6 +3,8 @@ package com.nickblomberg.kivation;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import com.nickblomberg.kivation.models.OAuthCredentials;
+
 /**
  * // TODO create class javadoc
  *
@@ -46,14 +48,10 @@ public class SessionManager {
         mEditor.commit();
     }
 
-    public String[] getOAuthCredentials() {
+    public OAuthCredentials getOAuthCredentials() {
         String token = mPreferences.getString(OAUTH_TOKEN, "");
         String secret = mPreferences.getString(OAUTH_SECRET, "");
 
-        String[] credentials = new String[2];
-        credentials[0] = token;
-        credentials[1] = secret;
-
-        return credentials;
+        return new OAuthCredentials(token, secret);
     }
 }

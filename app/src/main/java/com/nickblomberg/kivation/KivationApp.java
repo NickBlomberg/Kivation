@@ -3,6 +3,7 @@ package com.nickblomberg.kivation;
 import android.app.Application;
 
 import com.facebook.stetho.Stetho;
+import com.nickblomberg.kivation.models.OAuthCredentials;
 import com.nickblomberg.kivation.network.NetworkService;
 
 import timber.log.Timber;
@@ -21,10 +22,10 @@ public class KivationApp extends Application {
 
     private void createNetworkService() {
         SessionManager sessionManager = new SessionManager(this);
-        String[] credentials = sessionManager.getOAuthCredentials();
+        OAuthCredentials credentials = sessionManager.getOAuthCredentials();
 
-        if (credentials.length == 2) {
-            mNetworkService = new NetworkService(credentials[0], credentials[1]);
+        if (credentials != null) {
+            mNetworkService = new NetworkService(credentials.getToken(), credentials.getSecret());
         } else {
             mNetworkService = new NetworkService();
         }

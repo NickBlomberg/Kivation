@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import com.nickblomberg.kivation.R;
 import com.nickblomberg.kivation.SessionManager;
+import com.nickblomberg.kivation.models.OAuthCredentials;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -51,13 +52,13 @@ public class MainActivity extends BaseActivity {
     }
 
     private void updateLoginDetails() {
-        String[] credentials = sessionManager.getOAuthCredentials();
-        String token = credentials[0];
-        String secret = credentials[1];
+        OAuthCredentials credentials = sessionManager.getOAuthCredentials();
+
 
         // Show the access token and secret when entries have been saved
-        if (credentials.length == 2) {
-            mLoginStatus.setText("\nToken: " + token + "\n\nSecret: " + secret);
+        if (credentials != null) {
+            mLoginStatus.setText("\nToken: " + credentials.getToken()
+                    + "\n\nSecret: " + credentials.getSecret());
         }
     }
 
