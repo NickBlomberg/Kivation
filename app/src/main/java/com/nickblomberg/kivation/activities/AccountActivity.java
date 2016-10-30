@@ -6,7 +6,7 @@ import android.widget.TextView;
 
 import com.nickblomberg.kivation.KivationApp;
 import com.nickblomberg.kivation.R;
-import com.nickblomberg.kivation.models.UserAccount;
+import com.nickblomberg.kivation.models.my.UserAccount;
 import com.nickblomberg.kivation.network.NetworkService;
 import com.nickblomberg.kivation.presenters.AccountPresenter;
 

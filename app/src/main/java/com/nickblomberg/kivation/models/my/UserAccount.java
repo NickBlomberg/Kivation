@@ -1,4 +1,4 @@
-package com.nickblomberg.kivation.models;
+package com.nickblomberg.kivation.models.my;
 
 import com.google.gson.annotations.SerializedName;
 

@@ -1,7 +1,7 @@
 package com.nickblomberg.kivation.models.responses;
 
 import com.google.gson.annotations.SerializedName;
-import com.nickblomberg.kivation.models.UserAccount;
+import com.nickblomberg.kivation.models.my.UserAccount;
 
 /**
  * Provides a model for the response received by retrofit when requesting
