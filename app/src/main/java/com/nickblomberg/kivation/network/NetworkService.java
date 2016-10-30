@@ -49,7 +49,8 @@ public class NetworkService {
 
         OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder()
                 .addNetworkInterceptor(new StethoInterceptor())
-                .addInterceptor(loggingInterceptor);
+                .addInterceptor(loggingInterceptor)
+                .addInterceptor(new GlobalInterceptor());
 
         if (mToken != "" && mSecret != "") {
             OkHttpOAuthConsumer consumer =
