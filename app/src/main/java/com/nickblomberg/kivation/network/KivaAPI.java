@@ -3,6 +3,7 @@ package com.nickblomberg.kivation.network;
 import com.nickblomberg.kivation.models.PagedLoans;
 import com.nickblomberg.kivation.models.responses.AccountResponse;
 import com.nickblomberg.kivation.models.responses.BalanceResponse;
+import com.nickblomberg.kivation.models.responses.LenderResponse;
 
 import retrofit2.http.GET;
 import retrofit2.http.Path;
@@ -28,4 +29,7 @@ public interface KivaAPI {
 
     @GET("my/balance.json")
     Observable<BalanceResponse> getBalance();
+
+    @GET("my/lender.json")
+    Observable<LenderResponse> getMyLender();
 }
