@@ -9,4 +9,6 @@
     <string name="activity_title_recent">Recent</string>
 
     <string name="account_loans_made">Loans made</string>
+    <string name="account_invitees">Invitees</string>
+
 </resources>

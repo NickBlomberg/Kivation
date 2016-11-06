@@ -39,7 +39,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:gravity="center"
-                android:orientation="vertical">
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -48,6 +50,26 @@
 
                 <TextView
                     android:id="@+id/account_num_loans"
+                    style="@style/kivationLargeGreenText"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingLeft="16dp"
+                android:paddingRight="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/account_invitees"/>
+
+                <TextView
+                    android:id="@+id/account_num_invitees"
                     style="@style/kivationLargeGreenText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"/>

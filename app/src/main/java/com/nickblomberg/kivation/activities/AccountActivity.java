@@ -29,6 +29,7 @@ public class AccountActivity extends BaseActivity {
     @Nullable @BindView(R.id.account_full_name) TextView mFullName;
     @Nullable @BindView(R.id.account_image) ImageView mAccountImage;
     @Nullable @BindView(R.id.account_num_loans) TextView mNumLoans;
+    @Nullable @BindView(R.id.account_num_invitees) TextView mNumInvitees;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -58,5 +59,7 @@ public class AccountActivity extends BaseActivity {
                 .into(mAccountImage);
 
         mNumLoans.setText(Integer.toString(lender.getLoanCount()));
+
+        mNumInvitees.setText(Integer.toString(lender.getInviteeCount()));
     }
 }
