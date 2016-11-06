@@ -8,4 +8,5 @@
     <string name="activity_title_profile">Profile</string>
     <string name="activity_title_recent">Recent</string>
 
+    <string name="account_loans_made">Loans made</string>
 </resources>

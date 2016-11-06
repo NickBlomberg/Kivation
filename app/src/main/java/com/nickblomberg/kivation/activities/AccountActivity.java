@@ -28,6 +28,7 @@ public class AccountActivity extends BaseActivity {
 
     @Nullable @BindView(R.id.account_full_name) TextView mFullName;
     @Nullable @BindView(R.id.account_image) ImageView mAccountImage;
+    @Nullable @BindView(R.id.account_num_loans) TextView mNumLoans;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,5 +56,7 @@ public class AccountActivity extends BaseActivity {
         Picasso.with(this)
                 .load(lender.getImage().getSmallImageURL())
                 .into(mAccountImage);
+
+        mNumLoans.setText(Integer.toString(lender.getLoanCount()));
     }
 }
