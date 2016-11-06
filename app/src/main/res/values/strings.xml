@@ -10,5 +10,9 @@
 
     <string name="account_loans_made">Loans made</string>
     <string name="account_invitees">Invitees</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_recent">Recent</string>
+    <string name="nav_account">Account</string>
+    <string name="nav_login">Login</string>
 
 </resources>
