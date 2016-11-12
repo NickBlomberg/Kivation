@@ -42,3 +42,5 @@ gen-external-apklibs
 
 .DS_Store
 Config.java
+
+google-services.json
