@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.nickblomberg.kivation.EndlessScrollListener;
+import com.nickblomberg.kivation.listeners.EndlessScrollListener;
 import com.nickblomberg.kivation.KivationApp;
 import com.nickblomberg.kivation.R;
 import com.nickblomberg.kivation.models.Loan;

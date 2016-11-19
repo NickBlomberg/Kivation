@@ -1,4 +1,4 @@
-package com.nickblomberg.kivation;
+package com.nickblomberg.kivation.listeners;
 
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
