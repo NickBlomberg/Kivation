@@ -6,7 +6,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 
-import com.nickblomberg.kivation.EndlessRecyclerViewScrollListener;
+import com.nickblomberg.kivation.EndlessScrollListener;
 import com.nickblomberg.kivation.KivationApp;
 import com.nickblomberg.kivation.R;
 import com.nickblomberg.kivation.models.Loan;
@@ -59,7 +59,7 @@ public class NewestLoansActivity extends BaseActivity {
         mNewestLoansPresenter = new NewestLoansPresenter(this, networkService);
         mNewestLoansPresenter.loadNewestLoans(1);
 
-        mRecyclerView.addOnScrollListener(new EndlessRecyclerViewScrollListener((LinearLayoutManager) layoutManager) {
+        mRecyclerView.addOnScrollListener(new EndlessScrollListener((LinearLayoutManager) layoutManager) {
             @Override
             public void onLoadMore(int page, int totalItemsCount) {
                 mNewestLoansPresenter.loadNewestLoans(page);
