@@ -1,7 +1,7 @@
 package com.nickblomberg.kivation.presenters;
 
 import com.nickblomberg.kivation.views.activities.NewestLoansActivity;
-import com.nickblomberg.kivation.models.PagedLoans;
+import com.nickblomberg.kivation.models.responses.LoansResponse;
 import com.nickblomberg.kivation.network.NetworkService;
 
 import rx.Observer;
@@ -27,7 +27,7 @@ public class NewestLoansPresenter {
         mNetworkService.getAPI().getNewestLoans(page)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<PagedLoans>() {
+                .subscribe(new Observer<LoansResponse>() {
                     @Override
                     public void onCompleted() {
 
@@ -39,8 +39,8 @@ public class NewestLoansPresenter {
                     }
 
                     @Override
-                    public void onNext(PagedLoans pagedLoans) {
-                        mView.displayNewestLoans(pagedLoans.getLoans());
+                    public void onNext(LoansResponse loansResponse) {
+                        mView.displayNewestLoans(loansResponse.getLoans());
                     }
                 });
     }

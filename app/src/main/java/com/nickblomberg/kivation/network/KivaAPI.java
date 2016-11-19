@@ -1,6 +1,6 @@
 package com.nickblomberg.kivation.network;
 
-import com.nickblomberg.kivation.models.PagedLoans;
+import com.nickblomberg.kivation.models.responses.LoansResponse;
 import com.nickblomberg.kivation.models.responses.AccountResponse;
 import com.nickblomberg.kivation.models.responses.BalanceResponse;
 import com.nickblomberg.kivation.models.responses.LenderResponse;
@@ -15,12 +15,12 @@ import rx.Observable;
  */
 public interface KivaAPI {
     @GET("loans/{ids}.json")
-    Observable<PagedLoans> getLoan(
+    Observable<LoansResponse> getLoan(
             @Path("ids") int id
     );
 
     @GET("loans/newest.json")
-    Observable<PagedLoans> getNewestLoans(
+    Observable<LoansResponse> getNewestLoans(
             @Query("page") int page);
 
     // My (user data)

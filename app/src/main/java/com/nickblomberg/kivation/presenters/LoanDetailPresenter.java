@@ -1,7 +1,7 @@
 package com.nickblomberg.kivation.presenters;
 
 import com.nickblomberg.kivation.views.activities.LoanDetailActivity;
-import com.nickblomberg.kivation.models.PagedLoans;
+import com.nickblomberg.kivation.models.responses.LoansResponse;
 import com.nickblomberg.kivation.network.NetworkService;
 
 import rx.Observer;
@@ -30,7 +30,7 @@ public class LoanDetailPresenter {
         mNetworkService.getAPI().getLoan(loanID)
                 .subscribeOn(Schedulers.newThread())
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<PagedLoans>() {
+                .subscribe(new Observer<LoansResponse>() {
                     @Override
                     public void onCompleted() {
 
@@ -42,8 +42,8 @@ public class LoanDetailPresenter {
                     }
 
                     @Override
-                    public void onNext(PagedLoans pagedLoans) {
-                        mView.setSecondaryLoanData(pagedLoans.getLoans().get(0));
+                    public void onNext(LoansResponse loansResponse) {
+                        mView.setSecondaryLoanData(loansResponse.getLoans().get(0));
                     }
                 });
     }
