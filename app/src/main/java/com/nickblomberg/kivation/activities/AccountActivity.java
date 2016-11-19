@@ -12,6 +12,7 @@ import com.nickblomberg.kivation.models.my.UserAccount;
 import com.nickblomberg.kivation.models.my.UserBalance;
 import com.nickblomberg.kivation.network.NetworkService;
 import com.nickblomberg.kivation.presenters.AccountPresenter;
+import com.nickblomberg.kivation.ui.CircleTransform;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;
@@ -56,6 +57,7 @@ public class AccountActivity extends BaseActivity {
     public void setLenderData(Lender lender) {
         Picasso.with(this)
                 .load(lender.getImage().getSmallImageURL())
+                .transform(new CircleTransform())
                 .into(mAccountImage);
 
         mNumLoans.setText(Integer.toString(lender.getLoanCount()));

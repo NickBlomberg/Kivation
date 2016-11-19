@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.nickblomberg.kivation.R;
 import com.nickblomberg.kivation.models.Loan;
+import com.nickblomberg.kivation.ui.CircleTransform;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -79,6 +80,7 @@ public class LoanAdapter extends RecyclerView.Adapter<LoanAdapter.ViewHolder> {
 
         Picasso.with(mContext)
                 .load(mLoans.get(i).getImage().getSmallImageURL())
+                .transform(new CircleTransform())
                 .into(viewHolder.loanImage);
 
         viewHolder.loanAmount.setText("$ " + mLoans.get(i).getLoanAmount());
