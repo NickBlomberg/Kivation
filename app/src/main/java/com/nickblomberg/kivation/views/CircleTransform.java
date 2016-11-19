@@ -1,4 +1,4 @@
-package com.nickblomberg.kivation.ui;
+package com.nickblomberg.kivation.views;
 
 import android.graphics.Bitmap;
 import android.graphics.BitmapShader;

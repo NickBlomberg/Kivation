@@ -12,7 +12,7 @@ import com.nickblomberg.kivation.models.my.UserAccount;
 import com.nickblomberg.kivation.models.my.UserBalance;
 import com.nickblomberg.kivation.network.NetworkService;
 import com.nickblomberg.kivation.presenters.AccountPresenter;
-import com.nickblomberg.kivation.ui.CircleTransform;
+import com.nickblomberg.kivation.views.CircleTransform;
 import com.squareup.picasso.Picasso;
 
 import butterknife.BindView;

@@ -5,13 +5,12 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.nickblomberg.kivation.R;
 import com.nickblomberg.kivation.models.Loan;
-import com.nickblomberg.kivation.ui.CircleTransform;
+import com.nickblomberg.kivation.views.CircleTransform;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
