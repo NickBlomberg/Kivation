@@ -5,7 +5,7 @@ import org.parceler.Parcel;
 import java.util.List;
 
 /**
- * // TODO create class javadoc
+ * A collection of tags which have been used to categorize a Loan.
  *
  * @author Nick Blomberg
  */

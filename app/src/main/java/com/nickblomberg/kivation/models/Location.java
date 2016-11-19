@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import org.parceler.Parcel;
 
 /**
- * // TODO create class javadoc
+ * A model to define the location from which a Loan originates.
  *
  * @author Nick Blomberg
  */

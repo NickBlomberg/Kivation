@@ -3,8 +3,11 @@ package com.nickblomberg.kivation.models;
 import org.parceler.Parcel;
 
 /**
- * // TODO create class javadoc
+ * A geographical location from which the loan request originates.
+ * The pairs instance variable contains the latitude and longitude
+ * separated by a space.
  *
+ * @see http://build.kiva.org/docs/data/basic_types
  * @author Nick Blomberg
  */
 

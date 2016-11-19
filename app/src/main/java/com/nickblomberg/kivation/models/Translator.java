@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 import org.parceler.Parcel;
 
 /**
- * // TODO create class javadoc
+ * Details about the volunteer involved in translating the description of a Loan.
  *
  * @author Nick Blomberg
  */

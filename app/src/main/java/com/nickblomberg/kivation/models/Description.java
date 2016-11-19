@@ -3,7 +3,7 @@ package com.nickblomberg.kivation.models;
 import org.parceler.Parcel;
 
 /**
- * // TODO create class javadoc
+ * The English text associated with the description of a particular loan.
  *
  * @author Nick Blomberg
  */
