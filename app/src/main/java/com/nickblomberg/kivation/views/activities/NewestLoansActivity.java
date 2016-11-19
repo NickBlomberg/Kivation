@@ -2,9 +2,11 @@ package com.nickblomberg.kivation.views.activities;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ProgressBar;
 
 import com.nickblomberg.kivation.listeners.EndlessScrollListener;
 import com.nickblomberg.kivation.KivationApp;
@@ -18,6 +20,7 @@ import org.parceler.Parcels;
 
 import java.util.List;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 /**
@@ -25,6 +28,7 @@ import butterknife.ButterKnife;
  */
 public class NewestLoansActivity extends BaseActivity {
 
+    @BindView(R.id.newest_loans_progress) @Nullable ProgressBar mProgressBar;
     RecyclerView mRecyclerView;
 
     private LoanAdapter mAdapter;
@@ -35,6 +39,8 @@ public class NewestLoansActivity extends BaseActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_recent);
         ButterKnife.bind(this);
+
+        mProgressBar.setVisibility(ProgressBar.VISIBLE);
 
         mRecyclerView = (RecyclerView) findViewById(R.id.loans_recycler_view);
 
@@ -68,6 +74,7 @@ public class NewestLoansActivity extends BaseActivity {
     }
 
     public void displayNewestLoans(List<Loan> loans) {
+        mProgressBar.setVisibility(ProgressBar.INVISIBLE);
         mAdapter.appendLoans(loans);
         mAdapter.notifyDataSetChanged();
     }
