@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingBottom="8dp"
     android:paddingTop="8dp"
-    tools:context=".activities.NewestLoansActivity">
+    tools:context=".views.activities.NewestLoansActivity">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/loans_recycler_view"

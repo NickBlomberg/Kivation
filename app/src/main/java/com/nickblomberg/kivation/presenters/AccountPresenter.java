@@ -1,6 +1,6 @@
 package com.nickblomberg.kivation.presenters;
 
-import com.nickblomberg.kivation.activities.AccountActivity;
+import com.nickblomberg.kivation.views.activities.AccountActivity;
 import com.nickblomberg.kivation.models.responses.AccountResponse;
 import com.nickblomberg.kivation.models.responses.BalanceResponse;
 import com.nickblomberg.kivation.models.responses.LenderResponse;

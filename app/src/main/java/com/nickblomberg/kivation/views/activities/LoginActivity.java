@@ -1,4 +1,4 @@
-package com.nickblomberg.kivation.activities;
+package com.nickblomberg.kivation.views.activities;
 
 import android.content.Intent;
 import android.net.Uri;

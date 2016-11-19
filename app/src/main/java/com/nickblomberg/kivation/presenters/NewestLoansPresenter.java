@@ -1,6 +1,6 @@
 package com.nickblomberg.kivation.presenters;
 
-import com.nickblomberg.kivation.activities.NewestLoansActivity;
+import com.nickblomberg.kivation.views.activities.NewestLoansActivity;
 import com.nickblomberg.kivation.models.PagedLoans;
 import com.nickblomberg.kivation.network.NetworkService;
 
