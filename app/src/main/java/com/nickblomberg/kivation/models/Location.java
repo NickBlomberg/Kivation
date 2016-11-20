@@ -63,4 +63,18 @@ public class Location {
     public void setGeo(Geo geo) {
         this.geo = geo;
     }
+
+    public float getLatitude() {
+        String pairs = this.getGeo().getPairs();
+        String longitude = pairs.split(" ")[0];
+
+        return Float.parseFloat(longitude);
+    }
+
+    public float getLongitude() {
+        String pairs = this.getGeo().getPairs();
+        String latitude = pairs.split(" ")[1];
+
+        return Float.parseFloat(latitude);
+    }
 }

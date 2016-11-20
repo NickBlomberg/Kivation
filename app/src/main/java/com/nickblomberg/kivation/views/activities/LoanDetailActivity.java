@@ -14,6 +14,8 @@ import com.squareup.picasso.Picasso;
 
 import org.parceler.Parcels;
 
+import java.net.URI;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
@@ -25,6 +27,7 @@ public class LoanDetailActivity extends BaseActivity {
     @Nullable @BindView(R.id.detail_loan_sector) TextView mLoanTheme;
     @Nullable @BindView(R.id.detail_description) TextView mLoanDescription;
     @Nullable @BindView(R.id.detail_loan_country) TextView mLoanCountry;
+    @Nullable @BindView(R.id.loan_location_map) ImageView mLoanMap;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,5 +57,11 @@ public class LoanDetailActivity extends BaseActivity {
 
     public void setSecondaryLoanData(Loan loan) {
         mLoanDescription.setText(loan.getDescription().getDescription());
+
+        URI mapUrl = mLoanDetailPresenter.createStaticGoogleMap(loan.getLocation());
+
+        Picasso.with(this)
+                .load(mapUrl.toASCIIString())
+                .into(mLoanMap);
     }
 }
