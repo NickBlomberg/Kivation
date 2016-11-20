@@ -16,5 +16,7 @@
     <string name="nav_login">Login</string>
 
     <string name="content_description_loan_avatar">Loan avatar</string>
+    <string name="heading_description">Description</string>
+    <string name="heading_location">Location</string>
 
 </resources>
